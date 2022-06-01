@@ -1,14 +1,16 @@
 #!/bin/bash
 
 profile () {
-  yum -y install gcc gcc-c++ pcre wget openssl openssl-devel libtool >> /dev/null 2>&1
-  cd /usr/local/src && wget https://nginx.org/download/nginx-1.18.0.tar.gz >> /dev/null 2>&1
+  echo "installing rely on...."
+  yum -y install gcc gcc-c++ pcre wget openssl openssl-devel libtool gd gd-devel
+  echo "dowload nginx_1.18......"
+  cd /usr/local/src && wget https://nginx.org/download/nginx-1.18.0.tar.gz
   useradd nginx -s /sbin/nologin
 }
 install () {
     tar -xf nginx-1.18.0.tar.gz -C /usr/local/src
     cd /usr/local/src/nginx-1.18.0
-    ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx  --with-http_ssl_module  --with-http_stub_status_module >> /dev/null
+    ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx  --with-http_ssl_module  --with-http_stub_status_module --with-http_gzip_static_module --with-http_image_filter_module >> /dev/null
     if [ $? == 0 ] ;then
        make >> /dev/null && make install >> /dev/null
        cd /usr/local/nginx/sbin && ./nginx || /usr/local/nginx/sbin/nginx
