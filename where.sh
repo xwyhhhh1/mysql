@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "jjjj"
+echo "text"
