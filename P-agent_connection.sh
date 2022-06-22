@@ -6,6 +6,7 @@ if [ $(id -u) -eq 0 ] ;then
    iptables -I INPUT -s $BLUEKING_P_AGENT -d $BLUEKING_PROXY_LAN -p tcp --dport 48533 -j ACCEPT
    iptables -I INPUT -p tcp --dport 22 -j ACCEPT
    iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+   iptables -I INPUT -p tcp --dport 17980:17981 -j ACCEPT
    iptables -I INPUT -s $BLUEKING_P_AGENT -d $BLUEKING_PROXY_LAN -p tcp --dport 58625 -j ACCEPT
    iptables -I INPUT -s $BLUEKING_P_AGENT -d $BLUEKING_PROXY_LAN -p tcp --dport 59173 -j ACCEPT
    iptables -I INPUT -s $BLUEKING_P_AGENT -d $BLUEKING_PROXY_LAN -p tcp --dport 10020 -j ACCEPT
