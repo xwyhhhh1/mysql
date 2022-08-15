@@ -1,3 +1,4 @@
+#!/bin/bash
 [[ ! -f /tmp/data_summary ]] && touch /tmp/data_summary.txt
 DATA_FILE_CHECK=/tmp/data_summary.txt
 DATA_FILE_NAME=data_summary

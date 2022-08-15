@@ -97,7 +97,7 @@ LDAP_Schema () {
 Ldap_Profile
 LDAP_Schema
 cat <<EOF
-如果以上没有报错，那么就已经完成ldap搭建
+如果以上没有报错,那么就已经完成ldap搭建
 base:dc=yaobili,dc=admin,dc=com
 user:cn=admin,dc=yaobili,dc=com
 password:$passwd
