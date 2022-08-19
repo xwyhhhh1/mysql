@@ -144,3 +144,20 @@ iptables -I INPUT -s $PROXY -d $PROXY -p tcp --dport 10020 -j ACCEPT
 iptables -I INPUT -s $PROXY -d $PROXY -p udp --dport 10020 -j ACCEPT
 iptables -I INPUT -s $PROXY -d $PROXY -p udp --dport 10030 -j ACCEPT
 iptables -I INPUT -s $PROXY -d 172.17.20.176 -p tcp --dport 58725 -j ACCEPT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+iptables
