@@ -4,11 +4,19 @@ read -t 20 -p "hostname: " a
 BACKUP_PATH=/root/backup
 YUM_PATH=/etc/yum.repos.d
 IPV6_CONFIG=/etc/sysctl.conf
+RESOLV=/etc/resolv.conf
 if [ $USER != "root" ]; then
 echo "YOU need root implement"
 exit 1
 fi
-
+echo "<============>manage resolv.conf<===============>"
+RESOLV_1=$(grep "nameserver 127.0.0.1" ${RESOLV} | wc -l)
+if [ $RESOLV_1 -ge 1 ]; then
+   echo "nameserver 127.0.0.1 is exits"
+else
+   sed -i "1i nameserver 127.0.0.1" $RESOLV
+   echo "chanage yes"
+fi
 echo "<============>close NetworkManager<=============>"
 systemctl stop NetworkManager && systemctl disable NetworkManager
 echo "<============>close Filewalld<=============>"
