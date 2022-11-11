@@ -32,9 +32,10 @@ if [[ $MYSQL_MD5 == $mysql_md5 ]] ;then
     tar -xf ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz -C $MYSQL_DOWNLOAD_PATH/
     ln -s ${MYSQL_DOWNLOAD_PATH}/mysql-5.7.38-linux-glibc2.12-x86_64/ $BASE
     chown mysql.mysql ${MYSQL_DOWNLOAD_PATH}/mysql-5.7.38-linux-glibc2.12-x86_64/* -R
-    echo "yes"
+    echo "Already completed"
 else
     echo "page md5 incorrect,please try again!!"
+    exit 1;
 fi
 
 
@@ -51,7 +52,7 @@ else
     fi
 fi
 if [ ! -f ${CONFIG}/my.cnf ] ;then
-   echo "my.cnf not file"
+   echo "my.cnf not file............"
 else
    mv ${CONFIG}/my.cnf ${CONFIG}/my.cnf.d/
 fi
@@ -70,9 +71,9 @@ echo "initdata mysql............"
 if [ ! -f $MYSQL_INIT_LOGS ] ;then
    touch $MYSQL_INIT_LOGS
    chown mysql.mysql $MYSQL_INIT_LOGS
-   $BASE/bin/mysqld --initialize --user=mysql --basedir=$BASE --datadir=$DATA >> $MYSQL_INIT_LOGS
+   $BASE/bin/mysqld --initialize --user=mysql --basedir=$BASE --datadir=$DATA
 else
-   $BASE/bin/mysqld --initialize --user=mysql --basedir=$BASE --datadir=$DATA >> $MYSQL_INIT_LOGS
+   $BASE/bin/mysqld --initialize --user=mysql --basedir=$BASE --datadir=$DATA
 fi
 echo "build mysql start file"
 cp $BASE/support-files/mysql.server $MYSQL_START_FILE
