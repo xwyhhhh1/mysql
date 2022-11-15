@@ -24,7 +24,7 @@ else
    echo "mysql数据目录已经存在"
 fi
 
-#下载mysql二进制安装包，源采用的是清华源
+#下载mysql二进制安装包,源采用的是清华源
 echo "download mysql........"
 # wget $MYSQL_URL --no-check-certificate -O ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz 
 mysql_md5=$(md5sum $MYSQL_DOWNLOAD_PATH/mysql.tar.gz | awk -F " " '{print $1}')
@@ -39,7 +39,7 @@ else
 fi
 
 
-#安装相关依赖，但是在网络互通的情况下
+#安装相关依赖,但是在网络互通的情况下
 if ping www.baidu.com -C 3 > /dev/null 2>&1 ;then
     echo "download........"
     yum -y install gcc gcc-c++ openssl-devel boost-devel pcre prel ncurses-devel libaio
@@ -56,7 +56,7 @@ if [ ! -f ${CONFIG}/my.cnf ] ;then
 else
    mv ${CONFIG}/my.cnf ${CONFIG}/my.cnf.d/
 fi
-#创建mysql配
+#创建mysql配置文件
 echo "build congf-file........."
 cat << EOF > $CONFIG/my.cnf
 [mysqld] 
