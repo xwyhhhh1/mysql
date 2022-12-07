@@ -1,7 +1,7 @@
 #!/bin/bash
 #version:1.0
 #email:2293558627@qq.com
-read -t 10 -p "镜像加速器地址: " URL
+read -t 100 -p "镜像加速器地址: " URL
 Profile () {
     echo "<=================>Environmental preparation........<=================>"
     yum -y install wget gcc gcc-c++ >> /dev/null 2>&1

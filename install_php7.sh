@@ -9,11 +9,11 @@ PHP_NAME=/usr/local/src/php
 profile_fist () {
     echo "<========>install rely<========>"
     yum -y install gcc gcc-c++ gd gd-devel libxml2-devel unzip sqlite-devel libcurl libcurl-devel oniguruma-devel pcre-devel perl perl-devel bison-devel re2c wget vim
-    id www > /dev/null 2>&1
+    id nginx > /dev/null 2>&1
     if [ $? -eq 0 ] ; then
-       echo "user www existence"
+       echo "user nginx existence"
     else
-       useradd www -s /sbin/nologin
+       useradd nginx -s /sbin/nologin
     fi
 }
  profile_sencd() {
@@ -46,7 +46,7 @@ install_libzip () {
 install_php () {
     cd $PHP_NAME
     echo "<========>configure ing......<========>"
-    ./configure --prefix=${PHP_PATH} --with-fpm-user=www --with-fpm-group=www --with-zlib --with-pdo-mysql=mysqlnd  --enable-mysqlnd --with-curl --with-jpeg --with-xpm --enable-fpm --enable-ftp --enable-gd --enable-mbstring --enable-sockets  --with-zip --with-pcre-jit
+    ./configure --prefix=${PHP_PATH} --with-fpm-user=nginx --with-fpm-group=nginx --with-zlib --with-pdo-mysql=mysqlnd  --enable-mysqlnd --with-curl --with-jpeg --with-xpm --enable-fpm --enable-ftp --enable-gd --enable-mbstring --enable-sockets  --with-zip --with-pcre-jit
     sleep 10
     echo "<========>makeing......<========>"
     make && make install
