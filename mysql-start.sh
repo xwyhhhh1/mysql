@@ -12,6 +12,7 @@ start () {
                echo "process,socket,port not find start mysqld......"
                nohup ${mysql_bin}/mysqld_safe --defaults-file=${conf_dir}/my.cnf --datadir=$data_dir --basedir=$base_dir &
                [ $? -eq 0 ] && echo "start SUCCESS!!!" || echo "Error please check nohub.out and mysqld.log"
+               sleep 10
             else
                 echo "port exits!!"
                 exit 1;
@@ -35,6 +36,7 @@ stop () {
                 echo "stop mysql........"
                 nohup ${mysql_bin}/mysqladmin -uroot -p$passwd -S ${data_dir}mysql.sock shutdown
                 [ $? -eq 0 ] && echo "stop SUCCESS!!!" || echo "Error please check nohub.out and mysqld.log"
+                sleep 10
             else
                 echo "port in not find"
             fi
@@ -64,7 +66,7 @@ case $1 in
         stop
         ;;
     restart)
-        restart
+        rester
         ;;
     *)
         usage
