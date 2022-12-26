@@ -26,7 +26,7 @@ fi
 
 #下载mysql二进制安装包,源采用的是清华源
 echo "download mysql........"
-# wget $MYSQL_URL --no-check-certificate -O ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz 
+wget $MYSQL_URL --no-check-certificate -O ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz 
 mysql_md5=$(md5sum $MYSQL_DOWNLOAD_PATH/mysql.tar.gz | awk -F " " '{print $1}')
 if [[ $MYSQL_MD5 == $mysql_md5 ]] ;then
     tar -xf ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz -C $MYSQL_DOWNLOAD_PATH/
@@ -66,6 +66,7 @@ basedir = $BASE
 datadir = $DATA
 pid-file = ${DATA}/mysql.pid
 log-error = ${DATA}/mysqld.log
+character_set_server = utf8mb4
 EOF
 echo "initdata mysql............"
 if [ ! -f $MYSQL_INIT_LOGS ] ;then

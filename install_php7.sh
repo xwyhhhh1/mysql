@@ -51,7 +51,15 @@ install_php () {
     echo "<========>makeing......<========>"
     make && make install
     if [ $? -eq 0 ] ; then
-       echo "<========>install php success<========>"
+       echo "<========>install php success!!!!!<========>"
+       sleep 3
+       echo "<========>config generate.........<========>"
+       cd ${PHP_PATH}/etc/
+       cp php-fpm.conf.default php-fpm.conf
+       cp ${PHP_NAME}/php.ini-production ${PHP_PATH}/etc/php.ini
+       mv ./php-fpm.d/www.conf.default ./php-fpm.d/www.conf
+       ../sbin/php-fpm
+       [ $? -eq 0 ] && echo "php-fpm start sucess!!" || echo "php-fpm start error!!"
     else
        echo "<========>install php fail<========>"
        exit 1;
