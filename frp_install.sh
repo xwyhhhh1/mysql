@@ -11,7 +11,7 @@ Frp_Log_Dir=/var/log/frp
 Frp_Bin=/usr/bin
 Frp_Port=5600
 Tmp_Dir=/usr/local/src/
-WIP=171.111.193.209
+WIP=
 
 #######funntion#####
 
