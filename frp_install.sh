@@ -11,7 +11,7 @@ Frp_Log_Dir=/var/log/frp
 Frp_Bin=/usr/bin
 Frp_Port=5600
 Tmp_Dir=/usr/local/src/
-WIP=
+WIP=171.111.193.209
 
 #######funntion#####
 
@@ -73,7 +73,7 @@ Filewalld_Add () {
 }
 
 Start_Services () {
-    [ -x $Frp_Bin/$1 ] || cp $Tmp_Dir/$Frp_Name/$1 $Frp_Bin
+    [ -x $Frp_Bin/$1 ] || cp $Tmp_Dir/$Frp_Name/$1 $Frp_Bin/
     $Frp_Bin/$1 -c $Frp_Dir/$1.ini >> $Frp_Log_Dir/$1.log &
 }
 
@@ -90,15 +90,15 @@ Stop_Services () {
 }
 
 Restart_Service () {
-    Stop_Sservice $1
-    Start_Service $1
+    Stop_Services $1
+    Start_Services $1
 }
 
 Server_Install () {
     preparation
     Server_Config_Data
     Filewalld_Add
-    Start_Services frps       
+    Start_Services frps      
 
 }
 
@@ -107,7 +107,7 @@ Clinet_Install () {
     preparation
     Client_Config_Data
     Filewalld_Add
-    Start_Servies frpc
+    Start_Services frpc
 }
 
 
@@ -119,6 +119,7 @@ main () {
                     Server_Install
                 ;;
                 start)
+                    preparation
                     Start_Services frps
                 ;;
                 stop)
@@ -138,6 +139,7 @@ main () {
                     Clinet_Install
                 ;;
                 start)
+                    preparation
                     Start_Services frpc
                 ;;
                 stop)

@@ -1,7 +1,7 @@
 #!/bin/bash
 #定义相关变量
 MYSQL_DOWNLOAD_PATH=/usr/local/src
-MYSQL_URL=https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQL-5.7/mysql-5.7.38-linux-glibc2.12-x86_64.tar.gz
+MYSQL_URL=https://mirrors.aliyun.com/mysql/MySQL-5.7/mysql-5.7.38-linux-glibc2.12-x86_64.tar.gz
 BASE=/usr/local/mysql
 DATA=/data/mysql/
 CONFIG=/etc
