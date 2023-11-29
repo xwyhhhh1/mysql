@@ -45,7 +45,7 @@ if ping www.baidu.com -C 3 > /dev/null 2>&1 ;then
     yum -y install gcc gcc-c++ openssl-devel boost-devel pcre prel ncurses-devel libaio
     [ $? -eq 0 ] && echo "安装依赖成功" || echo "安装依赖失败,请检查情况"
 else
-    if timeout 3m  yum -y install gcc gcc-c++ openssl-devel boost-devel pcre prel ncurses-devel libaio ;then
+    if timeout 10m  yum -y install gcc gcc-c++ openssl-devel boost-devel pcre prel ncurses-devel libaio ;then
         echo "安装依赖成功"
     else
         echo "网络故障,建议排查"
