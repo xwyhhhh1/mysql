@@ -49,6 +49,7 @@ else
         echo "安装依赖成功"
     else
         echo "网络故障,建议排查"
+        exit 2
     fi
 fi
 if [ ! -f ${CONFIG}/my.cnf ] ;then
