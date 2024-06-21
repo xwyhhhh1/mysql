@@ -14,7 +14,7 @@ Profile () {
 }
 Install () {
     yum -y install docker-ce docker-ce-cli containerd.io >> /dev/null 2>&1
-    [ $? -eq 0 ] && echo "<=================>install Dependent is yes<====================>" || echo "<=================>Install Error<====================>" ; exit 1
+    [ $? -eq 0 ] && echo "<=================>install Dependent is yes<====================>" || echo "<=================>Install Error<====================>"
     systemctl restart docker
     systemctl enable docker >> /dev/null 2>&1
 }
@@ -34,12 +34,13 @@ Replace_accelerator () {
         echo "<==============>modfiy File......<==============>"
         echo "{" >> /etc/docker/daemon.json
         echo " \"registry-mirrors\": [\"$URL\"]" >> /etc/docker/daemon.json
-        echo "}"
+        echo "}" >> /etc/docker/daemon.json
         docker pull centos >> /dev/null 2>&1
     fi
 }
 Check_Network () {
     echo "$(cat /proc/sys/net/ipv4/ip_forward)"
+    echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
     echo "非一请开启网络转发功能"
 }
 Start_Docker () {
