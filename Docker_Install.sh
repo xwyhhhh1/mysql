@@ -28,7 +28,7 @@ Replace_accelerator () {
         mkdir -p /etc/docker
         echo "{" >> /etc/docker/daemon.json
         echo " \"registry-mirrors\": [\"$URL\"]" >> /etc/docker/daemon.json
-        echo "}"
+        echo "}"  >> /etc/docker/daemon.json
         docker pull centos >> /dev/null 2>&1
     else
         echo "<==============>modfiy File......<==============>"
