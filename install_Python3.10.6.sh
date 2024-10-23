@@ -14,7 +14,7 @@ wget_() {
         cd $WGET_PATH         
         wget $PYTHON_URL
         wget $OPENSSL_URL --no-check-certificate
-        yum -y install gcc gcc-c++ zlib-devel perl-devel libtools-devel openssl_devel
+        yum -y install gcc gcc-c++ zlib-devel perl-devel libtools-devel openssl-devel
     else
         echo "网络故障,请求失败"
     fi
