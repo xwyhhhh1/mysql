@@ -2,7 +2,7 @@
 
 profile () {
   echo "installing rely on...."
-  yum -y install gcc gcc-c++ pcre wget openssl openssl-devel libtool gd gd-devel
+  yum -y install gcc gcc-c++ pcre wget openssl openssl-devel libtool gd gd-devel wget net-tools
   echo "dowload nginx_1.18......"
   cd /usr/local/src && wget https://nginx.org/download/nginx-1.18.0.tar.gz
   useradd nginx -s /sbin/nologin
