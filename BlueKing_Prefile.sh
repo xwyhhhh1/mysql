@@ -1,5 +1,5 @@
 #!/bin/bash
-read -t 20 -p "hostname: " a
+# read -t 20 -p "hostname: " a
 #variable
 BACKUP_PATH=/root/backup
 YUM_PATH=/etc/yum.repos.d
@@ -73,7 +73,8 @@ else
    echo "Time synchronization failure"
    exit 1
 fi
-hostnamectl set-hostname $a
+# hostnamectl set-hostname $a
+hostnamectl set-hostname $1
 echo "<============>Ready to log out<=============>"
 sleep 10
 echo "success!"
