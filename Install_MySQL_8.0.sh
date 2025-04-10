@@ -90,6 +90,10 @@ fi
 echo "build mysql start file"
 cp $BASE/support-files/mysql.server $MYSQL_START_FILE
 
-$MYSQL_START_FILE start
+$MYSQL_START_FILE start && echo "start successfuly" || exit
+# get password
+password=$(cat $DATA/mysqld.log | grep password | awk '{print $NF}')
+# change default password
+$BASE/bin/mysql -uroot -p -S $DATA/mysql.sock -e "set password='wtd5842@@tdg...';" && echo "default password is wtd5842@@tdg..." || echo "password cheange filed"
 
 
