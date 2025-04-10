@@ -31,7 +31,7 @@ wget $MYSQL_URL --no-check-certificate -O ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz
 mysql_md5=$(md5sum $MYSQL_DOWNLOAD_PATH/mysql.tar.gz | awk -F " " '{print $1}')
 if [[ $MYSQL_MD5 == $mysql_md5 ]] ;then
     tar -xf ${MYSQL_DOWNLOAD_PATH}/mysql.tar.gz -C $MYSQL_DOWNLOAD_PATH/
-    tar -xf ${MYSQL_DOWNLOAD_PATH}/${MYSQL_GLIBC_VERSION}.tar.xz
+    tar -xf ${MYSQL_DOWNLOAD_PATH}/${MYSQL_GLIBC_VERSION}.tar.xz -C $MYSQL_DOWNLOAD_PATH/
     ln -s ${MYSQL_DOWNLOAD_PATH}/${MYSQL_GLIBC_VERSION}/ $BASE
     chown mysql.mysql ${MYSQL_DOWNLOAD_PATH}/${MYSQL_GLIBC_VERSION}/* -R
     echo "Already completed"
