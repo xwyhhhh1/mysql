@@ -62,6 +62,8 @@ fi
 #创建mysql配置文件
 echo "build congf-file........."
 cat << EOF > $CONFIG/my.cnf
+[client]
+socket = /data/mysql/mysql.sock
 [mysqld] 
 user = mysql   
 socket = ${DATA}/mysql.sock
@@ -70,6 +72,7 @@ datadir = $DATA
 pid-file = ${DATA}/mysql.pid
 log-error = ${DATA}/mysqld.log
 character_set_server = utf8mb4
+default_authentication_plugin = mysql_native_password
 ## binlog-settings
 # server-id=1
 log-bin=mysql-bin-log
